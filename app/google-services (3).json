@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "267026301564",
+    "firebase_url": "https://creaciones-yazmin-default-rtdb.firebaseio.com",
+    "project_id": "creaciones-yazmin",
+    "storage_bucket": "creaciones-yazmin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267026301564:android:a7ba5c0b0452f72c087ff9",
+        "android_client_info": {
+          "package_name": "com.creacionesyazmin.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2jCvkRt6TTl6-HxCwVkKK6TN5OaP61vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
