@@ -17,11 +17,7 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar Android SDK
-        run: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-
+      
       - name: Crear Gradle Wrapper
         run: gradle wrapper --gradle-version 8.9
 
