@@ -21,7 +21,7 @@ jobs:
         run: |
           rm -rf app build.gradle settings.gradle
           mkdir proyecto
-          unzip -q CreacionesYazminApp_base.zip -d proyecto
+          unzip -q unzip -q ./*.zip -d proyecto
           cp -r proyecto/* .
           rm -rf proyecto
 
