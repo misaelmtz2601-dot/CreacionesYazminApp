@@ -17,11 +17,25 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar proyecto Creaciones Yazmin
+      - name: Preparar proyecto
         run: |
+          echo "Archivos ZIP encontrados:"
+          find . -maxdepth 1 -type f -name "*.zip" -print
+
+          ZIP=$(find . -maxdepth 1 -type f -name "*.zip" -print -quit)
+
+          if [ -z "$ZIP" ]; then
+            echo "ERROR: No se encontró el ZIP"
+            exit 1
+          fi
+
+          echo "Usando: $ZIP"
+
           rm -rf app build.gradle settings.gradle
           mkdir proyecto
-          unzip -q unzip -q CreacionesYazminApp_base-1.zip -d proyecto
+
+          unzip -q "$ZIP" -d proyecto
+
           cp -r proyecto/* .
           rm -rf proyecto
 
