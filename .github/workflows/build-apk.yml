@@ -19,33 +19,21 @@ jobs:
 
       - name: Preparar proyecto
         run: |
-          echo "Archivos ZIP encontrados:"
-          find . -maxdepth 1 -type f -name "*.zip" -print
+          ZIP=$(find . -maxdepth 1 -name "*.zip" -type f | head -n 1)
+          echo "ZIP encontrado: $ZIP"
+          test -n "$ZIP"
 
-          ZIP=$(find . -maxdepth 1 -type f -name "*.zip" -print -quit)
-
-          if [ -z "$ZIP" ]; then
-            echo "ERROR: No se encontró el ZIP"
-            exit 1
-          fi
-
-          echo "Usando: $ZIP"
-
-          rm -rf app build.gradle settings.gradle
+          rm -rf app build.gradle settings.gradle gradle.properties
           mkdir proyecto
 
           unzip -q "$ZIP" -d proyecto
 
           cp -r proyecto/* .
-         
           rm -rf proyecto
-- name: Activar AndroidX
-  run: echo 
-  "android.useAndroidX=true" 
-  >> gradle.properties
-               
 
-          
+          echo "android.useAndroidX=true" > gradle.properties
+          echo "android.enableJetifier=true" >> gradle.properties
+
       - name: Instalar Gradle
         run: |
           wget -q https://services.gradle.org/distributions/gradle-8.9-bin.zip
