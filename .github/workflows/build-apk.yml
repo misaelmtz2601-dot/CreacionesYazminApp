@@ -17,15 +17,22 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      
-      - name: Crear Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.9
+      - name: Preparar proyecto Creaciones Yazmin
+        run: |
+          rm -rf app build.gradle settings.gradle
+          mkdir proyecto
+          unzip -q CreacionesYazminApp_base.zip -d proyecto
+          cp -r proyecto/* .
+          rm -rf proyecto
 
-      - name: Dar permisos a Gradle
-        run: chmod +x gradlew
+      - name: Instalar Gradle
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.9-bin.zip
+          unzip -q gradle-8.9-bin.zip -d /tmp
 
       - name: Construir APK
-        run: ./gradlew assembleDebug
+        run: |
+          /tmp/gradle-8.9/bin/gradle assembleDebug --no-daemon
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
