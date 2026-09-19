@@ -37,8 +37,14 @@ jobs:
           unzip -q "$ZIP" -d proyecto
 
           cp -r proyecto/* .
+         
           rm -rf proyecto
 
+               - name: Activar AndroidX
+        run: echo
+        "android.useAndroidX=true" >> gradle.properties
+
+          
       - name: Instalar Gradle
         run: |
           wget -q https://services.gradle.org/distributions/gradle-8.9-bin.zip
