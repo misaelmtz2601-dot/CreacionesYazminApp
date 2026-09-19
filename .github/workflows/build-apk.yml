@@ -39,10 +39,11 @@ jobs:
           cp -r proyecto/* .
          
           rm -rf proyecto
-
-               - name: Activar AndroidX
-        run: echo
-        "android.useAndroidX=true" >> gradle.properties
+- name: Activar AndroidX
+  run: echo 
+  "android.useAndroidX=true" 
+  >> gradle.properties
+               
 
           
       - name: Instalar Gradle
