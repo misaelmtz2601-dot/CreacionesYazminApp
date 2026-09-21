@@ -19,7 +19,7 @@ jobs:
 
       - name: Preparar proyecto
         run: |
-          ZIP=$(find . -maxdepth 1 -name "*.zip" -type f | head -n 1)
+          ZIP="CreacionesYazminApp_FINAL_sin_cambiar_diseno.zip"
           echo "ZIP encontrado: $ZIP"
           test -n "$ZIP"
 
