@@ -29,6 +29,7 @@ jobs:
           unzip -q "$ZIP" -d proyecto
 
           cp -r proyecto/* .
+          sed -i 's/TextView productCard/LinearLayout productCard/' app/src/main/java/com/creacionesyazmin/app/MainActivity.java
           rm -rf proyecto
 
           echo "android.useAndroidX=true" > gradle.properties
