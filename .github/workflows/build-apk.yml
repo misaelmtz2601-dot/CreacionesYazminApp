@@ -25,6 +25,21 @@ jobs:
 
           rm -rf app build.gradle settings.gradle gradle.properties
           mkdir proyecto
+                    python3 - <<'PY'
+          from pathlib import Path
+          p = Path("app/src/main/java/com/creacionesyazmin/app/MainActivity.java")
+          s = p.read_text()
+          viejo = "createUserWithEmailAndPassword(email, password)"
+          nuevo = """if (email == null || email.trim().isEmpty() || password == null || password.isEmpty()) {
+              android.widget.Toast.makeText(MainActivity.this, "Escribe tu correo y contraseña", android.widget.Toast.LENGTH_SHORT).show();
+              return;
+          }
+          createUserWithEmailAndPassword(email.trim(), password)"""
+          if viejo not in s:
+              raise SystemExit("No se encontró la llamada de Firebase")
+          s = s.replace(viejo, nuevo, 1)
+          p.write_text(s)
+          PY
 
           unzip -q "$ZIP" -d proyecto
 
