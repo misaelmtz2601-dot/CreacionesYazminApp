@@ -19,7 +19,7 @@ jobs:
 
       - name: Preparar proyecto
         run: |
-          ZIP="CreacionesYazminApp_FINAL_corregida.zip""
+          ZIP="CreacionesYazminApp_FINAL_corregida.zip"
           echo "ZIP encontrado: $ZIP"
           test -n "$ZIP"
 
